@@ -13,31 +13,32 @@
         android:theme="@style/Base_BizBundle_Theme"
         tools:replace="android:theme">
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-                <!--  demo use only start  -->
-                <action android:name="tuyasmart_demo_main" />
-                <!--  demo use only end  -->
-            </intent-filter>
-        </activity>
+<!--        <activity android:name=".MainActivity">-->
+<!--            <intent-filter>-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                &lt;!&ndash;  demo use only start  &ndash;&gt;-->
+<!--                <action android:name="tuyasmart_demo_main" />-->
+<!--                &lt;!&ndash;  demo use only end  &ndash;&gt;-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
         <meta-data
             android:name="TUYA_SMART_APPKEY"
-            android:value="${TUYA_SMART_APPKEY}" />
+            android:value="v9hjhn3thqce43r4ek93" />
 
         <meta-data
             android:name="TUYA_SMART_SECRET"
-            android:value="${TUYA_SMART_SECRET}" />
+            android:value="achyctn4cn9eg9qt7tcmmy4tmgg39umf" />
 
         <meta-data
             android:name="PACKAGE_NAME"
-            android:value="${PACKAGE_NAME}" />
+            android:value="com.example.laidianapp" />
 
-        <!-- demo use only start -->
+        <!-- android:theme="@style/SplashTheme"  demo use only start  android:name="com.tuya.smart.demo_login.base.activity.SplashActivity" -->
         <activity
-            android:name="com.tuya.smart.demo_login.base.activity.SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:name="com.tuya.smart.bizubundle.demo.MainActivity"
+
+            tools:ignore="DuplicateActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

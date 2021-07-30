@@ -2,14 +2,18 @@ package com.tuya.smart.bizubundle.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alibaba.fastjson.JSON;
 import com.tuya.smart.android.common.utils.L;
+import com.tuya.smart.android.user.api.ILoginCallback;
 import com.tuya.smart.android.user.api.ILogoutCallback;
+import com.tuya.smart.android.user.bean.User;
 import com.tuya.smart.api.service.MicroServiceManager;
 import com.tuya.smart.commonbiz.bizbundle.family.api.AbsBizBundleFamilyService;
 import com.tuya.smart.demo_login.base.utils.LoginHelper;
@@ -86,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         //此处只是演示代码，集成时请在登录成功后调用
         //This method must be called after successful login
-        TuyaWrapper.onLogin();
+//        TuyaWrapper.onLogin();
 
         // sample code
         mCurrentFamilyName = findViewById(R.id.current_family_name);
@@ -98,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ProgressUtil.showLoading(this, "Loading...");
-        getHomeList();
+
         TuyaHomeSdk.getHomeManagerInstance().registerTuyaHomeChangeListener(mHomeChangeListener);
         findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +128,22 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        TuyaHomeSdk.getUserInstance().loginOrRegisterWithUid("86", "15261587981", "15261587981", new ILoginCallback() {
+            @Override
+            public void onSuccess(User user) {
+                Log.e("loginOrRegisterWithUid", "login:"+ JSON.toJSONString(user));
+                getHomeList();
+            }
+
+            @Override
+            public void onError(String code, String error) {
+                Log.e("loginOrRegisterWithUid", "onError:"+code + error);
+            }
+        });
+
+
     }
 
     private void getHomeList() {

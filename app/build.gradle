@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.testbizbundle.demo"
+        applicationId "com.example.laidianapp"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -21,6 +21,11 @@ android {
                 ALEXA_AUTH_INTERNAL_HOST: "${properties.getProperty("app_scheme")}".toLowerCase(Locale.ENGLISH).concat('.applink.smart321.com'),
                 PACKAGE_NAME     : applicationId
         ]
+
+        packagingOptions {
+            pickFirst 'lib/*/libc++_shared.so' // 多个 AAR（Android Library）文件中存在此 .so 文件，请选择第一个
+        }
+
         ndk {
             abiFilters "armeabi-v7a", "arm64-v8a"
         }

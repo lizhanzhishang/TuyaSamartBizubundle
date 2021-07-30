@@ -6,13 +6,17 @@ import android.util.Log;
 
 import androidx.multidex.MultiDex;
 
+import com.alibaba.fastjson.JSON;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.tuya.smart.android.common.utils.L;
+import com.tuya.smart.android.user.api.ILoginCallback;
+import com.tuya.smart.android.user.bean.User;
 import com.tuya.smart.api.MicroContext;
 import com.tuya.smart.api.router.UrlBuilder;
 import com.tuya.smart.api.service.RedirectService;
 import com.tuya.smart.api.service.RouteEventListener;
 import com.tuya.smart.api.service.ServiceEventListener;
+import com.tuya.smart.camera.utils.JsonUtil;
 import com.tuya.smart.commonbiz.bizbundle.family.api.AbsBizBundleFamilyService;
 import com.tuya.smart.home.sdk.TuyaHomeSdk;
 import com.tuya.smart.optimus.sdk.TuyaOptimusSdk;
@@ -65,6 +69,8 @@ public class TuyaSmartApp extends Application {
                 // }
             }
         });
+
+
     }
 
     @Override
